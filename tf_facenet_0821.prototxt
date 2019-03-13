@@ -1,0 +1,5777 @@
+layer {
+  name: "input"
+  type: "Input"
+  top: "input"
+  input_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 160
+      dim: 160
+    }
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "input"
+  top: "InceptionResnetV1_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2a_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_2a_3x3_Conv2D"
+  top: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_2a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2b_3x3_Conv2D"
+  convolution_param {
+    num_output: 64
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_2b_3x3_Conv2D"
+  top: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_2b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_MaxPool_3a_3x3_MaxPool"
+  type: "Pooling"
+  bottom: "InceptionResnetV1_Conv2d_2b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_MaxPool_3a_3x3_MaxPool"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_3b_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_MaxPool_3a_3x3_MaxPool"
+  top: "InceptionResnetV1_Conv2d_3b_1x1_Conv2D"
+  convolution_param {
+    num_output: 80
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_3b_1x1_Conv2D"
+  top: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_3b_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_3b_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4a_3x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_4a_3x3_Conv2D"
+  top: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_4a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4b_3x3_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_Conv2D"
+  top: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Conv2d_4b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_1_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_concat"
+  top: "InceptionResnetV1_Repeat_block35_1_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Conv2d_4b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_1_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_1_add"
+  top: "InceptionResnetV1_Repeat_block35_1_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_add"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_add"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_1_add"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_2_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_concat"
+  top: "InceptionResnetV1_Repeat_block35_2_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_block35_1_add"
+  bottom: "InceptionResnetV1_Repeat_block35_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_2_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_2_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_2_add"
+  top: "InceptionResnetV1_Repeat_block35_2_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_add"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_add"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_2_add"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_3_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_concat"
+  top: "InceptionResnetV1_Repeat_block35_3_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_block35_2_add"
+  bottom: "InceptionResnetV1_Repeat_block35_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_3_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_3_add"
+  top: "InceptionResnetV1_Repeat_block35_3_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_add"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_add"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_3_add"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_4_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_concat"
+  top: "InceptionResnetV1_Repeat_block35_4_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_block35_3_add"
+  bottom: "InceptionResnetV1_Repeat_block35_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_4_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_4_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_4_add"
+  top: "InceptionResnetV1_Repeat_block35_4_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_add"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_add"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_4_add"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_Conv2D"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Branch_2_Conv2d_0c_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_block35_5_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_concat"
+  top: "InceptionResnetV1_Repeat_block35_5_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_block35_4_add"
+  bottom: "InceptionResnetV1_Repeat_block35_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_block35_5_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_block35_5_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_block35_5_add"
+  top: "InceptionResnetV1_Repeat_block35_5_add"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_add"
+  top: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_block35_5_add"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_2_MaxPool_1a_3x3_MaxPool"
+  type: "Pooling"
+  bottom: "InceptionResnetV1_Repeat_block35_5_add"
+  top: "InceptionResnetV1_Mixed_6a_Branch_2_MaxPool_1a_3x3_MaxPool"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_6a_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Mixed_6a_Branch_2_MaxPool_1a_3x3_MaxPool"
+  top: "InceptionResnetV1_Mixed_6a_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_6a_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_6a_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_1_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Mixed_6a_concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_1_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_add"
+  top: "InceptionResnetV1_Repeat_1_block17_1_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_add"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_add"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_2_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_1_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_2_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_2_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_add"
+  top: "InceptionResnetV1_Repeat_1_block17_2_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_add"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_add"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_3_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_2_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_3_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_add"
+  top: "InceptionResnetV1_Repeat_1_block17_3_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_add"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_add"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_4_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_3_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_4_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_4_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_add"
+  top: "InceptionResnetV1_Repeat_1_block17_4_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_add"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_add"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_5_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_4_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_5_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_5_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_add"
+  top: "InceptionResnetV1_Repeat_1_block17_5_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_add"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_add"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_6_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_5_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_6_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_6_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_add"
+  top: "InceptionResnetV1_Repeat_1_block17_6_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_add"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_add"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_7_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_6_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_7_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_add"
+  top: "InceptionResnetV1_Repeat_1_block17_7_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_add"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_add"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_8_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_7_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_8_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_8_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_add"
+  top: "InceptionResnetV1_Repeat_1_block17_8_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_add"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_add"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_9_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_8_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_9_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_9_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_add"
+  top: "InceptionResnetV1_Repeat_1_block17_9_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_add"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_add"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 3
+    kernel_h: 1
+    kernel_w: 7
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0b_1x7_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_Conv2D"
+  convolution_param {
+    num_output: 128
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 3
+    pad_w: 0
+    kernel_h: 7
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Branch_1_Conv2d_0c_7x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_1_block17_10_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_concat"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 896
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_1_block17_9_add"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_1_block17_10_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_1_block17_10_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_add"
+  top: "InceptionResnetV1_Repeat_1_block17_10_add"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_add"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_add"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_add"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool"
+  type: "Pooling"
+  bottom: "InceptionResnetV1_Repeat_1_block17_10_add"
+  top: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+  }
+}
+layer {
+  name: "DummyData1"
+  type: "DummyData"
+  top: "DummyData1"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 896
+      dim: 3
+      dim: 3
+    }
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool_crop"
+  type: "Crop"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool"
+  bottom: "DummyData1"
+  top: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool_crop"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_0b_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_Conv2D"
+  convolution_param {
+    num_output: 256
+    bias_term: false
+    group: 1
+    stride: 2
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_Conv2D"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Mixed_7a_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_0_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_1_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_2_Conv2d_1a_3x3_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Mixed_7a_Branch_3_MaxPool_1a_3x3_MaxPool_crop"
+  top: "InceptionResnetV1_Mixed_7a_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Mixed_7a_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_1_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Mixed_7a_concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_1_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_add"
+  top: "InceptionResnetV1_Repeat_2_block8_1_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_add"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_add"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_2_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_2_block8_1_add"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_2_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_2_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_add"
+  top: "InceptionResnetV1_Repeat_2_block8_2_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_add"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_add"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_3_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_2_block8_2_add"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_3_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_add"
+  top: "InceptionResnetV1_Repeat_2_block8_3_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_add"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_add"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_4_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_2_block8_3_add"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_4_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_4_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_add"
+  top: "InceptionResnetV1_Repeat_2_block8_4_add"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_add"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_add"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Repeat_2_block8_5_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_concat"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_2_block8_4_add"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Repeat_2_block8_5_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Repeat_2_block8_5_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_add"
+  top: "InceptionResnetV1_Repeat_2_block8_5_add"
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_add"
+  top: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_add"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_Conv2D"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0a_1x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 1
+    kernel_h: 1
+    kernel_w: 3
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_Conv2D"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0b_1x3_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_Conv2D"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    stride: 1
+    pad_h: 1
+    pad_w: 0
+    kernel_h: 3
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_Conv2D"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_Relu"
+  type: "ReLU"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+}
+layer {
+  name: "InceptionResnetV1_Block8_concat"
+  type: "Concat"
+  bottom: "InceptionResnetV1_Block8_Branch_0_Conv2d_1x1_BatchNorm_FusedBatchNorm"
+  bottom: "InceptionResnetV1_Block8_Branch_1_Conv2d_0c_3x1_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Block8_concat"
+  concat_param {
+    axis: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_Conv2d_1x1_Conv2D"
+  type: "Convolution"
+  bottom: "InceptionResnetV1_Block8_concat"
+  top: "InceptionResnetV1_Block8_Conv2d_1x1_Conv2D"
+  convolution_param {
+    num_output: 1792
+    bias_term: true
+    group: 1
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_mul"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Block8_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Block8_Conv2d_1x1_Conv2D"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Block8_add"
+  type: "Eltwise"
+  bottom: "InceptionResnetV1_Repeat_2_block8_5_add"
+  bottom: "InceptionResnetV1_Block8_Conv2d_1x1_Conv2D"
+  top: "InceptionResnetV1_Block8_add"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "InceptionResnetV1_Logits_AvgPool_1a_8x8_AvgPool"
+  type: "Pooling"
+  bottom: "InceptionResnetV1_Block8_add"
+  top: "InceptionResnetV1_Logits_AvgPool_1a_8x8_AvgPool"
+  pooling_param {
+    pool: AVE
+    kernel_size: 3
+    stride: 1
+    pad_h: 0
+    pad_w: 0
+  }
+}
+layer {
+  name: "InceptionResnetV1_Logits_Flatten_flatten_Reshape"
+  type: "Flatten"
+  bottom: "InceptionResnetV1_Logits_AvgPool_1a_8x8_AvgPool"
+  top: "InceptionResnetV1_Logits_Flatten_flatten_Reshape"
+}
+layer {
+  name: "InceptionResnetV1_Bottleneck_MatMul"
+  type: "InnerProduct"
+  bottom: "InceptionResnetV1_Logits_Flatten_flatten_Reshape"
+  top: "InceptionResnetV1_Bottleneck_MatMul"
+  inner_product_param {
+    num_output: 128
+    bias_term: false
+  }
+}
+layer {
+  name: "InceptionResnetV1_Bottleneck_BatchNorm_Reshape"
+  type: "Flatten"
+  bottom: "InceptionResnetV1_Bottleneck_MatMul"
+  top: "InceptionResnetV1_Bottleneck_BatchNorm_Reshape"
+}
+layer {
+  name: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm"
+  type: "BatchNorm"
+  bottom: "InceptionResnetV1_Bottleneck_BatchNorm_Reshape"
+  top: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 0.0010000000474974513
+  }
+}
+layer {
+  name: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm_scale"
+  type: "Scale"
+  bottom: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "InceptionResnetV1_Bottleneck_BatchNorm_Reshape_1"
+  type: "Flatten"
+  bottom: "InceptionResnetV1_Bottleneck_BatchNorm_FusedBatchNorm"
+  top: "InceptionResnetV1_Bottleneck_BatchNorm_Reshape_1"
+}
+
